@@ -174,6 +174,11 @@ func main() {
 	r.HandleFunc("/unfollow", unfollowHandler).Methods("POST")
 	r.PathPrefix("/").Handler(http.FileServer(http.Dir("./public/")))
 	http.Handle("/", r)
+
+	err = StartProfile(time.Minute * 2)
+	if err != nil {
+		panic(err)
+	}
 	http.ListenAndServe(listenAddr, nil)
 }
 
