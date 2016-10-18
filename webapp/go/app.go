@@ -1,14 +1,11 @@
 package main
 
 import (
-	"code.google.com/p/go-uuid/uuid"
 	"crypto/sha256"
 	"database/sql"
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
-	_ "github.com/go-sql-driver/mysql"
-	"github.com/gorilla/mux"
 	"io/ioutil"
 	"log"
 	"math/rand"
@@ -20,6 +17,10 @@ import (
 	"runtime"
 	"strconv"
 	"time"
+
+	_ "github.com/go-sql-driver/mysql"
+	"github.com/google/uuid"
+	"github.com/gorilla/mux"
 )
 
 const (
@@ -38,8 +39,8 @@ const (
 )
 
 var (
-	dbConn  *sql.DB
-	config  *Config
+	dbConn *sql.DB
+	config *Config
 )
 
 type Config struct {
